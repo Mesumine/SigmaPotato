@@ -9,6 +9,7 @@ using System.Threading;
 using SharpToken;
 using static NativeAPI.NativeMethods;
 using static NativeAPI.NewOrcbRPC;
+using System.Text;
 
 namespace NativeAPI
 {
