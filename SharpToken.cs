@@ -455,8 +455,6 @@ namespace SharpToken
         [DllImport("kernel32")]
         public static extern void CloseHandle(IntPtr hObject);
         [DllImport("kernel32")]
-        public static extern IntPtr GetCurrentProcess();
-        [DllImport("kernel32")]
         public static extern void SetLastError(uint dwErrCode);
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern bool CreatePipe(out IntPtr hReadPipe, out IntPtr hWritePipe, ref SECURITY_ATTRIBUTES lpPipeAttributes, int nSize);
@@ -1151,7 +1149,7 @@ namespace SharpToken
         {
             SYSTEM_HANDLE_TABLE_ENTRY_INFO_EX[] shteis = ListSystemHandle();
             List<ProcessToken> processTokens = new List<ProcessToken>();
-            IntPtr localProcessHandle = NativeMethod.GetCurrentProcess();
+            IntPtr localProcessHandle = (IntPtr)(-1);
             IntPtr processHandle = IntPtr.Zero;
             int lastPid = -1;
             for (int i = 0; i < shteis.Length; i++)

